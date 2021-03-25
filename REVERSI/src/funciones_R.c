@@ -7,8 +7,8 @@
 
 #include "Declaraciones_R.h"
 
-int modo(void){				// funcion que determina el modo de juego
-	printf("MODO DE JUEGO \n");
+int modo(void){								// funcion que determina el modo de juego
+	printf("MODO DE JUEGO \n");				// devuelve el modo de juego
 	printf("1- JUGADOR VS CPU \n");
 	printf("2- JUGADOR VS JUGADOR \n");
 	printf("3- CPU VS CPU \n");
@@ -28,7 +28,8 @@ int modo(void){				// funcion que determina el modo de juego
 	return n;
 }
 
-int quien_juega(void){			//funcion que determina quien comienza a jugar, si t = 1, comienza jugador 1, si t = 2 comienza jugador 2
+int quien_juega(void){						//funcion que determina quien comienza a jugar,
+											//si t = 1, comienza jugador 1, si t = 2 comienza jugador 2
 
 	//*-->*/printf("quien_juega \n");
 
@@ -55,7 +56,7 @@ int quien_juega(void){			//funcion que determina quien comienza a jugar, si t = 
 	return t;
 }
 
-int color_fichas(void){			//funcion que determina el color de los jugadores
+int color_fichas(void){						//funcion que determina el color de los jugadores
 
 	//*-->*/printf("color_fichas \n");
 
@@ -81,7 +82,7 @@ int color_fichas(void){			//funcion que determina el color de los jugadores
 	return c;
 }
 
-void cargar_tablero(void){			// carga e inicializa el tablero con '0'
+void cargar_tablero(void){					// carga e inicializa el tablero con '0'
 
 	//*-->*/printf("cargar_tablero \n");
 
@@ -101,7 +102,7 @@ void cargar_tablero(void){			// carga e inicializa el tablero con '0'
 
 }
 
-void imprimir_tablero(void){		// imprime el tablero
+void imprimir_tablero(void){				// imprime el tablero
 
 	//*-->*/printf("imprimir_tablero \n");
 
@@ -123,7 +124,7 @@ void imprimir_tablero(void){		// imprime el tablero
 	printf(".x. A  B  C  D  E  F  G  H .x.\n");
 }
 
-					// el primer color indica la ficha que juega y el segundo la ficha del contrario
+											// el primer color indica la ficha que juega y el segundo la ficha del contrario
 void posicion_valida(int jug, int c){		//recibe el "color" de la ficha y revisa en el tablero si se puede jugar
 	//*-->*/printf("entre a posicion valida\n");
 	borrar_pv();
@@ -274,8 +275,8 @@ void posicion_valida(int jug, int c){		//recibe el "color" de la ficha y revisa 
 		}
 }
 
-int pierde_turno(int c){				//debe contar la cantidad de posiciones validas, si es cero pierde el turno por no poder jugar
-										//devuelve TRUE si es que no encuentra alguna posicion y FALSE si encuentra
+int pierde_turno(int c){					//debe contar la cantidad de posiciones validas, si es cero pierde el turno por no poder jugar
+											//devuelve TRUE si es que no encuentra alguna posicion y FALSE si encuentra
 	//*-->*/printf("entre a pierde turno\n");
 	for(i = 0; i < MAX_NUM; i++){
 		for(j = 0; j < MAX_NUM; j++){
@@ -289,9 +290,9 @@ int pierde_turno(int c){				//debe contar la cantidad de posiciones validas, si 
 	return TRUE;
 }
 
-void turno_jugador(int jug, int c){		//efectua los movimientos, los cambios de ficha y
-								//limpia el tablero de las posiciones validas.
-								//recibe las coordenadas y el color de la ficha
+void turno_jugador(int jug, int c){			//efectua los movimientos, los cambios de ficha y
+											//limpia el tablero de las posiciones validas.
+											//recibe las coordenadas y el color de la ficha
 	//*-->*/printf("entre a turno_jugador\n");
 	opcion = SIGUE;
 	while(opcion == SIGUE){
@@ -318,8 +319,8 @@ void turno_jugador(int jug, int c){		//efectua los movimientos, los cambios de f
 	borrar_pv();
 }
 
-void accion_juego(int x, int y, int jug, int c){ //con las coordenadas, recorre las 8 direcciones para
-												 //realizar los cambios de color en las fichas
+void accion_juego(int x, int y, int jug, int c){ 	//con las coordenadas, recorre las 8 direcciones para
+													//realizar los cambios de color en las fichas
 	//*-->*/printf("entre accion del juego\n");
 	/*ARRIBA*/
 
@@ -512,7 +513,7 @@ void accion_juego(int x, int y, int jug, int c){ //con las coordenadas, recorre 
 
 }
 
-void borrar_pv(){//borra las posiciones validas no utilizadas
+void borrar_pv(){									//borra las posiciones validas no utilizadas
 
 	//*-->*/printf("borrar_pv \n");
 
@@ -525,7 +526,7 @@ void borrar_pv(){//borra las posiciones validas no utilizadas
 	}
 }
 
-int convertir_letras(char letra){		// convierte la columna recibida en caracter a entero
+int convertir_letras(char letra){					// convierte la columna recibida en caracter a entero
 
 	//*-->*/printf("convertir_letras \n");
 

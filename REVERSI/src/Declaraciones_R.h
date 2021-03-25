@@ -3,6 +3,7 @@
  *
  *  Created on: 10 feb. 2021
  *      Author: JOAQUIN WESTON
+ *      TODO revisar la funcion modo(void), porque no sale de dicha funcion
  */
 
 #ifndef DECLARACIONES_R_H_

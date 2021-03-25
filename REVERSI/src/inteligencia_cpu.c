@@ -10,7 +10,7 @@
 
 #include "Declaraciones_R.h"
 
-void turno_cpu(int c, int jug){
+void turno_cpu(int c, int jug){			//Se encarga de realizar el movimiento de juego de la IA
 
 	terminador_cpu = SIGUE;
 	while (terminador_cpu == SIGUE){
@@ -22,7 +22,7 @@ void turno_cpu(int c, int jug){
 	}
 }
 
-int verif_esquinas(int c, int jug){
+int verif_esquinas(int c, int jug){			//verifica si hay posibilidad de ocuparlas esquinas del tablero
 	//*-->*/printf("verif_esquinas \n");
 	mayor = 0;
 

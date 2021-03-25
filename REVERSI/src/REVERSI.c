@@ -4,7 +4,7 @@
  Author      : Joaquin Weston
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description : Funcion principal que solo ejecuta el juego
  ============================================================================
  */
 

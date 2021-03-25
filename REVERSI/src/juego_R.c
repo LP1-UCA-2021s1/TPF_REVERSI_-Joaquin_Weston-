@@ -8,7 +8,7 @@
 #include "Declaraciones_R.h"
 
 int terminador = SIGUE;
-void juego(){
+void juego(){			//funcion que hace correr el juego en orden
 
 	cargar_tablero();
 
