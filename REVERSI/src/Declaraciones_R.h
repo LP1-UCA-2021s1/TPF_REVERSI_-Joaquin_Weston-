@@ -3,7 +3,7 @@
  *
  *  Created on: 10 feb. 2021
  *      Author: JOAQUIN WESTON
- *      TODO revisar la funcion modo(void), porque no sale de dicha funcion
+ *      TODO revisar donde crushea el juego, porque no sale de dicha funcion
  */
 
 #ifndef DECLARACIONES_R_H_
@@ -28,17 +28,19 @@
 #define VACIO 0
 #define POS_VAL 5		//valor de posicion valida, el programa lee esto e imprime * en señal de posicion valida
 #define LIMITE 9
+#define NAME 25
 
 //Declaracion de tipos de datos, de variables
-int opcion, i, j, k, aux_i, aux_j, aux_x, aux_y; 	//iteradores
-int numero, turno, color, t, c, x, y, n, contador, mayor, valor, modo_val, modo_opc;
+
+int opcion, i, j, k, aux_i, aux_j, aux_x, aux_y, x, y; 	//iteradores
+int numero, turno, color, t, c, n, contador, mayor, valor, modo_val, modo_opc;
 int direccion, direccion_x, direccion_y;
 int jugador_1, jugador_2, cpu, eva; //cpu y eva son IA
 int terminador, terminador_cpu, c_flag, P_TURNO_JUG, P_TURNO_CPU;			// BANDERA QUE INDICA SI EL JUEGO CONTINUA O TERMINA
 int contador_blancas, contador_negras;	//contador de fichas para determinar un ganador
 int tablero[MAX_NUM][MAX_NUM];
 char columna, buffer;
-
+char nombre_1[NAME],nombre_2[NAME];
 
 
 
@@ -50,6 +52,7 @@ void imprimir_tablero(void);
 void cargar_tablero(void);
 int quien_juega(void);
 int color_fichas(void);
+void cargar_nombre(int jug);
 void posicion_valida(int jug, int c);
 int pierde_turno(int c);
 void turno_jugador(int jug, int c);
@@ -59,7 +62,7 @@ void borrar_pv(void);
 int convertir_letras(char letra);
 int verif_esquinas(int c, int jug);
 int accion_cpu(int c, int jug);
-int fin_del_juego (int x, int y, int jug, int c);
+int fin_del_juego (int x, int y, int jug, int c, int mod);
 
 
 #endif /* DECLARACIONES_R_H_ */

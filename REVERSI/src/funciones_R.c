@@ -555,8 +555,9 @@ int convertir_letras(char letra){					// convierte la columna recibida en caract
 }
 
 
-int fin_del_juego (int x, int y, int jug, int c){	//funcion que determina el fin del juego y da un ganador
-
+int fin_del_juego (int x, int y, int jug, int c, int mod){	//funcion que determina el fin del juego y da un ganador
+															//recibe las vanderas pierde turno, el valor de las fichas de
+															//cada jugador y el modo de juego
 	//*-->*/printf("fin_del_juego \n");
 
 	contador_blancas = 0;
@@ -572,16 +573,54 @@ int fin_del_juego (int x, int y, int jug, int c){	//funcion que determina el fin
 				}
 			}
 		}
-		if (contador_blancas > contador_negras){
-			printf("GANA EL JUGADOR\n");
-		}else if(contador_blancas < contador_negras){
-			printf("GANA LA CPU\n");
-		}else if(contador_blancas == contador_negras){
-			printf("EMPATE\n");
+
+		if(mod == JUG_VS_CPU){
+			if (contador_blancas > contador_negras){
+				printf("GANA %s \n", nombre_1);	//gana el jugador
+			}else if(contador_blancas < contador_negras){
+				printf("GANA LA CPU\n");
+			}else if(contador_blancas == contador_negras){
+				printf("EMPATE\n");
+			}
+		}else if(mod == JUG_VS_JUG){
+			if (contador_blancas > contador_negras){
+				printf("GANA %s \n", nombre_1);	//gana el jugador 1
+			}else if(contador_blancas < contador_negras){
+				printf("GANA %s \n", nombre_2);	//gana el jugador 2
+			}else if(contador_blancas == contador_negras){
+				printf("EMPATE\n");
+			}
+		}else if(mod == CPU_VS_CPU){
+			if (contador_blancas > contador_negras){
+				printf("GANA WALL-E\n");
+			}else if(contador_blancas < contador_negras){
+				printf("GANA EVA\n");
+			}else if(contador_blancas == contador_negras){
+				printf("EMPATE\n");
+			}
+
 		}
+
 		return FIN;
 	}else {
 		return SIGUE;
 	}
 }
 
+void cargar_nombre(int jug){		// pide el nombre de los jugadores
+	if (jug == JUG_VS_CPU){
+		printf("Ingrese el nombre del jugador_1: \n");
+		scanf("%s", nombre_1);
+		while((buffer = getchar()) != '\n' && buffer != EOF);
+	}else if(jug == JUG_VS_JUG){
+		printf("Ingrese el nombre del jugador_1: \n");
+		scanf("%s", nombre_1);
+		while((buffer = getchar()) != '\n' && buffer != EOF);
+
+		printf("Ingrese el nombre del jugador_2: \n");
+		scanf("%s", nombre_2);
+		while((buffer = getchar()) != '\n' && buffer != EOF);
+
+	}
+
+}

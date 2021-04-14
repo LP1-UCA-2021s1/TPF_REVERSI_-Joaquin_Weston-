@@ -10,7 +10,7 @@
 
 /*
  * TODO verificar las funciones problematicas
- * TODO agregar dos arreglos de caracteres que almacenen los nombres de los jugadores
+ * HECHO agregar dos arreglos de caracteres que almacenen los nombres de los jugadores
  * TODO tratar de conquistar el mundo
  * TODO hacer una funcion que revise en un archivo de lectura/escritura y escriba el resultado de un juego terminado como estadisticas
  * TODO agregar la interfaz grafica, ser lo mas informativo posible y arrazar con los puntos plus

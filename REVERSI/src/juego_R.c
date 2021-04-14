@@ -15,6 +15,7 @@ void juego(){			//funcion que hace correr el juego en orden
 	/*MENU DONDE SE DAN LAS 3 OPCIONES DE JUEGO*/
 
 	modo_opc = modo();
+	cargar_nombre(modo_opc);
 
 	if(modo_opc == JUG_VS_CPU){
 		turno = quien_juega();
@@ -57,7 +58,7 @@ void juego(){			//funcion que hace correr el juego en orden
 
 		if (modo_opc == JUG_VS_CPU){
 			if(turno == JUGADOR){		// primero juega jugador 1 y luego la CPU
-				printf("TURNO DE JUGADOR_1 \n");
+				printf("TURNO DE %s \n", nombre_1);		//Jugador 1
 
 				/*turno del jugador 1*/
 
@@ -66,7 +67,7 @@ void juego(){			//funcion que hace correr el juego en orden
 				imprimir_tablero();
 
 				if (pierde_turno(jugador_1) == FALSE){
-					printf("JUEGA JUGADOR_1 \n");
+					printf("JUEGA %s \n", nombre_1);
 					P_TURNO_JUG = FALSE;
 					turno_jugador(jugador_1, cpu);
 				}else {
@@ -90,7 +91,7 @@ void juego(){			//funcion que hace correr el juego en orden
 				}
 				imprimir_tablero();
 
-				terminador = fin_del_juego(P_TURNO_JUG,P_TURNO_CPU,jugador_1,cpu);
+				terminador = fin_del_juego(P_TURNO_JUG,P_TURNO_CPU,jugador_1,cpu,modo_opc);
 
 			}else if(turno == CPU){		// primero juega la CPU y luego el jugador_1
 
@@ -109,7 +110,7 @@ void juego(){			//funcion que hace correr el juego en orden
 				imprimir_tablero();
 
 				/*turno del jugador 1*/
-				printf("TURNO DE JUGADOR_1 \n");
+				printf("TURNO DE %s \n", nombre_1);		//Jugador 1
 
 				posicion_valida(jugador_1, cpu);
 				imprimir_tablero();
@@ -123,12 +124,12 @@ void juego(){			//funcion que hace correr el juego en orden
 				}
 
 				imprimir_tablero();
-				terminador = fin_del_juego(P_TURNO_JUG,P_TURNO_CPU,jugador_1,cpu);
+				terminador = fin_del_juego(P_TURNO_JUG,P_TURNO_CPU,jugador_1,cpu,modo_opc);
 			}
 		}else if(modo_opc == JUG_VS_JUG){
 
 			if(turno == JUGADOR){		// primero juega jugador 1 y luego el jugador 2
-				printf("TURNO DE JUGADOR_1 \n");
+				printf("TURNO DE %s \n", nombre_1);	//Jugador 1
 
 				/*turno del jugador 1*/
 
@@ -137,7 +138,7 @@ void juego(){			//funcion que hace correr el juego en orden
 				imprimir_tablero();
 
 				if (pierde_turno(jugador_1) == FALSE){
-					printf("JUEGA JUGADOR_1 \n");
+					printf("JUEGA %s \n", nombre_1);	//Jugador 1
 					P_TURNO_JUG = FALSE;
 					turno_jugador(jugador_1, jugador_2);
 				}else {
@@ -149,13 +150,13 @@ void juego(){			//funcion que hace correr el juego en orden
 
 				/*turno del jugador 2*/
 
-				printf("TURNO DEL JUGADOR 2 \n");
+				printf("TURNO DE %s \n", nombre_2); //Jugador 2
 				posicion_valida(jugador_2, jugador_1);	//la funcion debe verificar si es posible poner alguna ficha
 
 				imprimir_tablero();
 
 				if (pierde_turno(jugador_2) == FALSE){
-					printf("JUEGA JUGADOR_2 \n");
+					printf("JUEGA %s \n", nombre_2); //Jugador 2
 					P_TURNO_JUG = FALSE;
 					turno_jugador(jugador_2, jugador_1);
 				}else {
@@ -164,19 +165,19 @@ void juego(){			//funcion que hace correr el juego en orden
 					P_TURNO_JUG = TRUE;
 				}
 				imprimir_tablero();
-				terminador = fin_del_juego(P_TURNO_JUG,P_TURNO_CPU,jugador_1,jugador_2);
+				terminador = fin_del_juego(P_TURNO_JUG,P_TURNO_CPU,jugador_1,jugador_2,modo_opc);
 
 			}else if(turno == CPU){		// primero juega EL JUGADOR 2 y luego EL JUGADOR 1
 
 				/*turno deL JUGADOR 2*/
-				printf("TURNO DL JUGADOR 2 \n");
+				printf("TURNO DE %s \n", nombre_2); //Jugador 2
 
 				posicion_valida(jugador_2, jugador_1);	//la funcion debe verificar si es posible poner alguna ficha
 
 				imprimir_tablero();
 
 				if (pierde_turno(jugador_2) == FALSE){
-					printf("JUEGA JUGADOR_2 \n");
+					printf("JUEGA %s \n", nombre_2); //Jugador 2
 					P_TURNO_JUG = FALSE;
 					turno_jugador(jugador_2, jugador_1);
 				}else {
@@ -187,7 +188,7 @@ void juego(){			//funcion que hace correr el juego en orden
 				imprimir_tablero();
 
 				/*turno del jugador 1*/
-				printf("TURNO DE JUGADOR_1 \n");
+				printf("TURNO DE %s \n", nombre_1);		//Jugador 1
 
 				posicion_valida(jugador_1, jugador_2);
 				imprimir_tablero();
@@ -201,7 +202,7 @@ void juego(){			//funcion que hace correr el juego en orden
 				}
 
 				imprimir_tablero();
-				terminador = fin_del_juego(P_TURNO_JUG,P_TURNO_CPU,jugador_1,jugador_2);
+				terminador = fin_del_juego(P_TURNO_JUG,P_TURNO_CPU,jugador_1,jugador_2,modo_opc);
 			}
 		}else if(modo_opc == CPU_VS_CPU){
 			imprimir_tablero();
@@ -233,7 +234,7 @@ void juego(){			//funcion que hace correr el juego en orden
 				P_TURNO_JUG = TRUE;
 			}
 			imprimir_tablero();
-			terminador = fin_del_juego(P_TURNO_CPU,P_TURNO_JUG,cpu,eva);
+			terminador = fin_del_juego(P_TURNO_CPU,P_TURNO_JUG,cpu,eva,modo_opc);
 		}
 	}
 	terminador = FIN;
