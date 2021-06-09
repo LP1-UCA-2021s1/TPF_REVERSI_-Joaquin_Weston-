@@ -57,7 +57,6 @@ int jugador_1, jugador_2, cpu, eva; //cpu y eva son IA
 int terminador, terminador_cpu, c_flag, P_TURNO_JUG, P_TURNO_CPU;			// BANDERA QUE INDICA SI EL JUEGO CONTINUA O TERMINA
 int contador_blancas, contador_negras;	//contador de fichas para determinar un ganador
 char columna, buffer;
-char nombre_1[NAME],nombre_2[NAME];
 
 //General
     GtkBuilder *builder;
@@ -88,6 +87,10 @@ char nombre_1[NAME],nombre_2[NAME];
     GtkWidget *toogle_jugvscpu;
     GtkWidget *toogle_jugvsjug;
     GtkWidget *toogle_empiezajugador;
+    GtkWidget *entrynombrejugador;
+    GtkEntry *entrynombrejugador1;
+    gchar *nombre_1;
+    gchar *nombre_2;
 
 //Ventana de Ayuda
     GtkWidget *windowayuda;
@@ -174,6 +177,14 @@ void on_toogle_empiezajugador(GtkRadioButton *toogle_empiezajugador,gpointer dat
 	}
 }
 
+void entry_jug(GtkWidget *widget, gpointer data){
+	nombre_1 = gtk_entry_get_text(entrynombrejugador);
+}
+
+void entry_jug1(GtkWidget *widget1, gpointer data){
+	nombre_2 = gtk_entry_get_text(entrynombrejugador1);
+}
+
 botoncerrarayuda_clicked_cb(GtkWidget *widget, gpointer data){
 	gtk_widget_hide(windowayuda);
 }
@@ -195,7 +206,7 @@ void tablero_cb(GtkWidget *event_box, GdkEventButton *event, gpointer data){
 		if(turno == 1){		// primero jug1 y luego jug2
 
 			gchar *temp = g_strdup_printf("TURNO DEL JUGADOR 1");
-			gtk_label_set_text(GTK_LABEL(label_turno), temp);
+			gtk_label_set_text(GTK_LABEL(label_turno), nombre_1);
 			g_free(temp);
 			posicion_valida(jugador_1,jugador_2);
 
@@ -389,6 +400,13 @@ GtkWidget *crear_tablero(){
 	windowtablero = GTK_WIDGET(gtk_builder_get_object(builder, "ventanatablero"));//ventana de configuracion pre partida
     g_signal_connect (windowtablero, "destroy", G_CALLBACK (gtk_main_quit), NULL);
     windowayuda = GTK_WIDGET(gtk_builder_get_object(builder, "ventanaayuda"));//ventana de configuracion pre partida
+
+    entrynombrejugador = GTK_WIDGET(gtk_builder_get_object(builder, "entrynombrejugador"));
+
+    entrynombrejugador = gtk_builder_get_object(builder,"entrynombrejugador");
+	g_signal_connect(entrynombrejugador, "changed", G_CALLBACK (entry_jug), NULL);
+    entrynombrejugador1 = gtk_builder_get_object(builder,"entrynombrejugador1");
+	g_signal_connect(entrynombrejugador1, "changed", G_CALLBACK (entry_jug1), NULL);
 
     fixedinicio = GTK_WIDGET(gtk_builder_get_object(builder, "fixedinicio"));//fixed de la ventana principal
     fixedacercade = GTK_WIDGET(gtk_builder_get_object(builder, "fixedinfo"));//fixed de la ventana acerca del juego
@@ -1082,3 +1100,4 @@ int accion_cpu(int jug, int c){ //lo que debe hacer esta funcion es: analizar el
 	printf("%d - %d-%d\n", valor,direccion_x,direccion_y);
 	return FIN;
 }
+
