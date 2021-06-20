@@ -51,7 +51,7 @@ int tablero[N][N];
 //Declaracion de tipos de datos, de variables
 
 int opcion, k, aux_i, aux_j, aux_x, aux_y, x, y; 	//iteradores
-int numero, turno, color, t, c, n, contador, mayor, valor, modo_val, modo_opc, mod;
+int numero, color, t, c, n, contador, mayor, valor, modo_val, modo_opc, mod;
 int direccion, direccion_x, direccion_y;
 int jugador_1, jugador_2, cpu, eva; //cpu y eva son IA
 int terminador, terminador_cpu, c_flag, P_TURNO_JUG, P_TURNO_CPU;			// BANDERA QUE INDICA SI EL JUEGO CONTINUA O TERMINA
@@ -141,49 +141,55 @@ void on_toogle_jugvsjug(GtkRadioButton *toogle_jugvsjug,gpointer data){
 void on_toogle_sonic(GtkRadioButton *toogle_sonic, gpointer data){
 	gboolean T = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(toogle_sonic));
 	gboolean X = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(toogle_aleatoriocolor));
+	quepieza = rand()%2;
 
 	if (T){
 		printf("Entro al color sonic\n");
 		jugador_1 = SONIC;
 		jugador_2 = EGGMAN;
-		quepieza = 1;
 	}else if(X) {
-		quepieza = rand()%2;
+		if (quepieza == 1){
+			printf("Entro al color sonic\n");
+			jugador_1 = SONIC;
+			jugador_2 = EGGMAN;
+		}else{
+			printf("Entro al color eggman\n");
+			jugador_1 = EGGMAN;
+			jugador_2 = SONIC;
+		}
 		printf("Se va a elegir aleatoriamente el color: %d\n", quepieza);
 	}
 	else {
-		quepieza = 0;
+		printf("Entro al color eggman\n");
 		jugador_1 = EGGMAN;
 		jugador_2 = SONIC;
-		printf("Entro al color eggman\n");
 	}
 }
 
 void on_toogle_empiezajugador(GtkRadioButton *toogle_empiezajugador,gpointer data){
 	gboolean T= gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(toogle_empiezajugador));
-	if (T){
+	if (T == TRUE){
 		turno = 1;
 		printf("Comienza jugador 1\n");
 		gchar *temp = g_strdup_printf("TURNO DEL JUGADOR 1");
 		gtk_label_set_text(GTK_LABEL(label_turno), temp);
 		g_free(temp);
-	}
-	else{
-		turno = 0;
+	}else {
+		turno = 2;
 		printf("comienza jugador 2 / pc\n");
-		gchar *temp = g_strdup_printf("TURNO DEL JUGADOR 2");
-		gtk_label_set_text(GTK_LABEL(label_turno), temp);
-		g_free(temp);
+		gchar *tempo = g_strdup_printf("TURNO DEL JUGADOR 2");
+		gtk_label_set_text(GTK_LABEL(label_turno), tempo);
+		g_free(tempo);
 	}
 }
 
-void entry_jug(GtkWidget *widget, gpointer data){
-	nombre_1 = gtk_entry_get_text(entrynombrejugador);
-}
-
-void entry_jug1(GtkWidget *widget1, gpointer data){
-	nombre_2 = gtk_entry_get_text(entrynombrejugador1);
-}
+//void entry_jug(GtkWidget *widget, gpointer data){
+//	nombre_1 = gtk_entry_get_text(entrynombrejugador);
+//}
+//
+//void entry_jug1(GtkWidget *widget1, gpointer data){
+//	nombre_2 = gtk_entry_get_text(entrynombrejugador1);
+//}
 
 botoncerrarayuda_clicked_cb(GtkWidget *widget, gpointer data){
 	gtk_widget_hide(windowayuda);
@@ -319,7 +325,8 @@ void tablero_cb(GtkWidget *event_box, GdkEventButton *event, gpointer data){
 			}
 			borrar_pv();
 
-		}else if(turno ==2){//turno de la pc
+		}else if(turno == 2){//turno de la pc
+			printf("TURNO DE LA CPU\n");
 			posicion_valida(jugador_2,jugador_1);
 			turno_cpu(jugador_2, jugador_1);
 			turno = 1;
@@ -329,14 +336,15 @@ void tablero_cb(GtkWidget *event_box, GdkEventButton *event, gpointer data){
 			imprimir_tablero();
 			ActualizarTablero();
 			gtk_widget_show_all(windowtablero);
-			gtk_widget_show_all(windowtablero);
 			gchar *tempo = g_strdup_printf("TURNO DEL JUGADOR 1");
 			gtk_label_set_text(GTK_LABEL(label_turno), tempo);
 			g_free(tempo);
 		}
 	}
 
+	if(opcion_modo == 2){//cpu vs cpu
 
+	}
 
 }
 
@@ -401,12 +409,12 @@ GtkWidget *crear_tablero(){
     g_signal_connect (windowtablero, "destroy", G_CALLBACK (gtk_main_quit), NULL);
     windowayuda = GTK_WIDGET(gtk_builder_get_object(builder, "ventanaayuda"));//ventana de configuracion pre partida
 
-    entrynombrejugador = GTK_WIDGET(gtk_builder_get_object(builder, "entrynombrejugador"));
-
-    entrynombrejugador = gtk_builder_get_object(builder,"entrynombrejugador");
-	g_signal_connect(entrynombrejugador, "changed", G_CALLBACK (entry_jug), NULL);
-    entrynombrejugador1 = gtk_builder_get_object(builder,"entrynombrejugador1");
-	g_signal_connect(entrynombrejugador1, "changed", G_CALLBACK (entry_jug1), NULL);
+//    entrynombrejugador = GTK_WIDGET(gtk_builder_get_object(builder, "entrynombrejugador"));
+//
+//    entrynombrejugador = gtk_builder_get_object(builder,"entrynombrejugador");
+//	g_signal_connect(entrynombrejugador, "changed", G_CALLBACK (entry_jug), NULL);
+//    entrynombrejugador1 = gtk_builder_get_object(builder,"entrynombrejugador1");
+//	g_signal_connect(entrynombrejugador1, "changed", G_CALLBACK (entry_jug1), NULL);
 
     fixedinicio = GTK_WIDGET(gtk_builder_get_object(builder, "fixedinicio"));//fixed de la ventana principal
     fixedacercade = GTK_WIDGET(gtk_builder_get_object(builder, "fixedinfo"));//fixed de la ventana acerca del juego
@@ -939,6 +947,8 @@ int verif_esquinas(int c, int jug){			//verifica si hay posibilidad de ocuparlas
 int accion_cpu(int jug, int c){ //lo que debe hacer esta funcion es: analizar el tablero
 								//elegir la mejor opcion para la cpu
 	int i, j;
+	FILE *fichero_cpu;
+	fichero_cpu = fopen("Weston.txt", "wt");
 
 	valor = 0;
 	for(x = 0; x < MAX_NUM; x++){
@@ -1094,10 +1104,28 @@ int accion_cpu(int jug, int c){ //lo que debe hacer esta funcion es: analizar el
 			}
 		}
 	}
+	if(fichero_cpu == NULL) {
+		printf("Error: No se ha podido crear el fichero Weston.txt");
+	} else {
+		/* Escribimos dentro de "Weston.txt". */
+		fwrite(&direccion_x, sizeof(direccion_x), 1, fichero_cpu);
+		fwrite(&direccion_y, sizeof(direccion_y), 1, fichero_cpu);
+		/* Cerramos "Weston.txt". */
+		fclose(fichero_cpu);
+	}
+
+	fflush(stdin);
+
 	tablero[direccion_x][direccion_y] = jug;
 	accion_juego(direccion_x,direccion_y,jug,c);
 	borrar_pv();
 	printf("%d - %d-%d\n", valor,direccion_x,direccion_y);
 	return FIN;
+}
+
+void archivo(void){	//abre y lee un archivo
+	FILE *fichero;
+	fichero = fopen("Weston.txt", "rt");
+	fclose(fichero);
 }
 
