@@ -344,6 +344,121 @@ void tablero_cb(GtkWidget *event_box, GdkEventButton *event, gpointer data){
 
 	if(opcion_modo == 2){//cpu vs cpu
 
+		if(turno == 1){//turno de la cpu contraria
+
+			gchar *temp = g_strdup_printf("TURNO DEL ENEMIGO");
+			gtk_label_set_text(GTK_LABEL(label_turno), temp);
+			g_free(temp);
+			posicion_valida(jugador_1,jugador_2);
+
+			/*parte de manejo de archivos*/
+
+			FILE * fp;
+			int caracter, dir_x, dir_y;
+
+			fp = fopen("archivo.txt","r");
+
+			if( fp == NULL){
+
+				printf("Error al abrir archivo\n");
+
+			}else {
+
+				while((caracter = fgetc(fp)) != EOF){
+
+					if(caracter == 'A' || caracter == 'a'){
+						dir_y = 0;
+					}else if(caracter == 'B' || caracter == 'b'){
+						dir_y = 1;
+					}else if(caracter == 'C' || caracter == 'c'){
+						dir_y = 2;
+					}else if(caracter == 'D' || caracter == 'd'){
+						dir_y = 3;
+					}else if(caracter == 'E' || caracter == 'e'){
+						dir_y = 4;
+					}else if(caracter == 'F' || caracter == 'f'){
+						dir_y = 5;
+					}else if(caracter == 'G' || caracter == 'g'){
+						dir_y = 6;
+					}else if(caracter == 'H' || caracter == 'h'){
+						dir_y = 7;
+					}else if(caracter == '1'){
+						dir_x = 0;
+					}else if(caracter == '2'){
+						dir_x = 1;
+					}else if(caracter == '3'){
+						dir_x = 2;
+					}else if(caracter == '4'){
+						dir_x = 3;
+					}else if(caracter == '5'){
+						dir_x = 4;
+					}else if(caracter == '6'){
+						dir_x = 5;
+					}else if(caracter == '7'){
+						dir_x = 6;
+					}else if(caracter == '8'){
+						dir_x = 7;
+					}
+
+					printf("%c", caracter);
+
+				}
+			}
+
+
+			printf("%d - %d", dir_x, dir_y);
+
+			fclose(fp);
+
+			/*Fin de parte de manejo de archivos*/
+
+			i = dir_x;
+			j = dir_y;
+
+			printf("ha seleccionado %d - %d valor del tablero %d\n", i, j, tablero[i][j]);
+
+			if(tablero[i][j] != POS_VAL){
+
+				gchar *tempo = g_strdup_printf("LUGAR NO VALIDO");
+				gtk_label_set_text(GTK_LABEL(label_jugada), tempo);
+				g_free(tempo);
+				gchar *temp = g_strdup_printf("TURNO DEL JUGADOR 1");
+				gtk_label_set_text(GTK_LABEL(label_turno), temp);
+				g_free(temp);
+				turno = 1;
+
+			}else if(tablero[i][j] == POS_VAL){
+
+				gchar *tempor = g_strdup_printf("LUGAR VALIDO");
+				gtk_label_set_text(GTK_LABEL(label_jugada), tempor);
+				g_free(tempor);
+				gchar *temp = g_strdup_printf("TURNO DE LA CPU");
+				gtk_label_set_text(GTK_LABEL(label_turno), temp);
+				g_free(temp);
+				accion_juego(i,j,jugador_1,jugador_2);
+				turno = 2;
+				imprimir_tablero();
+				ActualizarTablero();
+
+			}
+			borrar_pv();
+
+		}else if(turno == 2){//turno de mi cpu
+			printf("TURNO DE LA CPU\n");
+			posicion_valida(jugador_2,jugador_1);
+			turno_cpu(jugador_2, jugador_1);
+			turno = 1;
+			gchar *temp = g_strdup_printf("TURNO DE LA CPU");
+			gtk_label_set_text(GTK_LABEL(label_turno), temp);
+			g_free(temp);
+			imprimir_tablero();
+			ActualizarTablero();
+			gtk_widget_show_all(windowtablero);
+			gchar *tempo = g_strdup_printf("TURNO DEL JUGADOR 1");
+			gtk_label_set_text(GTK_LABEL(label_turno), tempo);
+			g_free(tempo);
+		}
+
 	}
 
 }
@@ -931,15 +1046,163 @@ int verif_esquinas(int c, int jug){			//verifica si hay posibilidad de ocuparlas
 	contador = 0;
 	if (tablero[0][0] == POS_VAL){
 		accion_juego(0,0,c,jug);
+
+		/*seccion de manejo de archivos*/
+		direccion_x = 0;
+		direccion_y = 0;
+		FILE * jugadacpu;
+		char caracter;
+
+		caracter = direccion_x;
+
+		jugadacpu = fopen("CPU.txt","w");
+		fputc(caracter,jugadacpu);
+		fclose(jugadacpu);
+
+		jugadacpu = fopen("CPU.txt","a");
+
+		if(direccion_y == 0){
+			caracter = "A";
+		}else if(direccion_y == 1){
+			caracter = "B";
+		}else if(direccion_y == 2){
+			caracter = "C";
+		}else if(direccion_y == 3){
+			caracter = "D";
+		}else if(direccion_y == 4){
+			caracter = "E";
+		}else if(direccion_y == 5){
+			caracter = "F";
+		}else if(direccion_y == 6){
+			caracter = "G";
+		}else if(direccion_y == 7){
+			caracter = "H";
+		}
+
+		fputc(caracter,jugadacpu);
+		fclose(jugadacpu);
+		/*fin de manejo de archivos*/
+
 		return numero = FIN;
 	}else if (tablero[0][7] == POS_VAL){
 		accion_juego(0,7,c,jug);
+
+		/*seccion de manejo de archivos*/
+		direccion_x = 0;
+		direccion_y = 7;
+		FILE * jugadacpu;
+		char caracter;
+
+		caracter = direccion_x;
+
+		jugadacpu = fopen("CPU.txt","w");
+		fputc(caracter,jugadacpu);
+		fclose(jugadacpu);
+
+		jugadacpu = fopen("CPU.txt","a");
+
+		if(direccion_y == 0){
+			caracter = "A";
+		}else if(direccion_y == 1){
+			caracter = "B";
+		}else if(direccion_y == 2){
+			caracter = "C";
+		}else if(direccion_y == 3){
+			caracter = "D";
+		}else if(direccion_y == 4){
+			caracter = "E";
+		}else if(direccion_y == 5){
+			caracter = "F";
+		}else if(direccion_y == 6){
+			caracter = "G";
+		}else if(direccion_y == 7){
+			caracter = "H";
+		}
+
+		fputc(caracter,jugadacpu);
+		fclose(jugadacpu);
+		/*fin de manejo de archivos*/
+
 		return numero = FIN;
 	}else if (tablero[7][0] == POS_VAL){
 		accion_juego(7,0,c,jug);
+
+		/*seccion de manejo de archivos*/
+		direccion_x = 7;
+		direccion_y = 0;
+		FILE * jugadacpu;
+		char caracter;
+
+		caracter = direccion_x;
+
+		jugadacpu = fopen("CPU.txt","w");
+		fputc(caracter,jugadacpu);
+		fclose(jugadacpu);
+
+		jugadacpu = fopen("CPU.txt","a");
+
+		if(direccion_y == 0){
+			caracter = "A";
+		}else if(direccion_y == 1){
+			caracter = "B";
+		}else if(direccion_y == 2){
+			caracter = "C";
+		}else if(direccion_y == 3){
+			caracter = "D";
+		}else if(direccion_y == 4){
+			caracter = "E";
+		}else if(direccion_y == 5){
+			caracter = "F";
+		}else if(direccion_y == 6){
+			caracter = "G";
+		}else if(direccion_y == 7){
+			caracter = "H";
+		}
+
+		fputc(caracter,jugadacpu);
+		fclose(jugadacpu);
+		/*fin de manejo de archivos*/
+
 		return numero = FIN;
 	}else if (tablero[7][7] == POS_VAL){
 		accion_juego(7,7,c,jug);
+
+		/*seccion de manejo de archivos*/
+		direccion_x = 7;
+		direccion_y = 7;
+		FILE * jugadacpu;
+		char caracter;
+
+		caracter = direccion_x;
+
+		jugadacpu = fopen("CPU.txt","w");
+		fputc(caracter,jugadacpu);
+		fclose(jugadacpu);
+
+		jugadacpu = fopen("CPU.txt","a");
+
+		if(direccion_y == 0){
+			caracter = "A";
+		}else if(direccion_y == 1){
+			caracter = "B";
+		}else if(direccion_y == 2){
+			caracter = "C";
+		}else if(direccion_y == 3){
+			caracter = "D";
+		}else if(direccion_y == 4){
+			caracter = "E";
+		}else if(direccion_y == 5){
+			caracter = "F";
+		}else if(direccion_y == 6){
+			caracter = "G";
+		}else if(direccion_y == 7){
+			caracter = "H";
+		}
+
+		fputc(caracter,jugadacpu);
+		fclose(jugadacpu);
+		/*fin de manejo de archivos*/
+
 		return numero = FIN;
 	}else return SIGUE;
 }
@@ -1120,12 +1383,41 @@ int accion_cpu(int jug, int c){ //lo que debe hacer esta funcion es: analizar el
 	accion_juego(direccion_x,direccion_y,jug,c);
 	borrar_pv();
 	printf("%d - %d-%d\n", valor,direccion_x,direccion_y);
-	return FIN;
-}
 
-void archivo(void){	//abre y lee un archivo
-	FILE *fichero;
-	fichero = fopen("Weston.txt", "rt");
-	fclose(fichero);
+	/*seccion de manejo de archivos*/
+
+	FILE * jugadacpu;
+	char caracter;
+
+	caracter = direccion_x;
+
+	jugadacpu = fopen("CPU.txt","w");
+	fputc(caracter,jugadacpu);
+	fclose(jugadacpu);
+
+	jugadacpu = fopen("CPU.txt","a");
+
+	if(direccion_y == 0){
+		caracter = "A";
+	}else if(direccion_y == 1){
+		caracter = "B";
+	}else if(direccion_y == 2){
+		caracter = "C";
+	}else if(direccion_y == 3){
+		caracter = "D";
+	}else if(direccion_y == 4){
+		caracter = "E";
+	}else if(direccion_y == 5){
+		caracter = "F";
+	}else if(direccion_y == 6){
+		caracter = "G";
+	}else if(direccion_y == 7){
+		caracter = "H";
+	}
+
+	fputc(caracter,jugadacpu);
+	fclose(jugadacpu);
+	/*fin de manejo de archivos*/
+	return FIN;
 }
 
