@@ -1,0 +1,678 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.1 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkWindow" id="ventanaayuda">
+    <property name="can_focus">False</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkFixed">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkImage">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">../GTKpractica/IMG/background.png</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Ventana de Ayuda</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 14"/>
+              <attribute name="foreground" value="#ededd4d40000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">190</property>
+            <property name="y">15</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Objetivo del Juego: Finalizar el juego con la mayor cantidad de fichas de cierto color sobre
+ el tablero.
+Número de jugadores: Dos jugadores.
+Piezas: Fichas de color negro para un jugador, de color blanco para el otro jugador.
+Tablero: El juego se desarrolla sobre un tablero de 8 x 8, donde las columnas son
+identificadas con las letras A, B, C..., H (de izquierda a derecha) y las filas con 1, 2, 3,..., N
+ (de arriba a abajo).
+Es un juego entre dos personas, que comparten 64 fichas iguales, de caras distintas, que
+se van colocando por turnos en un tablero dividido en 64 escaques. Las caras de las fichas 
+se distinguen por su color y cada jugador tiene asignado uno de esos colores, ganando 
+quien tenga más fichas sobre el tablero al finalizar la partida. Se clasifica como juego de
+tablero, abstracto y territorial; al igual que el go y las amazonas. 
+</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 9"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">8</property>
+            <property name="y">37</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="botoncerrarayuda">
+            <property name="label" translatable="yes">Volver al juego</property>
+            <property name="width_request">116</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="x">200</property>
+            <property name="y">230</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="ventanaconfig">
+    <property name="can_focus">False</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkFixed" id="fixedconfig">
+        <property name="width_request">32</property>
+        <property name="height_request">32</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkImage">
+            <property name="width_request">640</property>
+            <property name="height_request">315</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">../GTKpractica/IMG/background.png</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="labeltituloconfig">
+            <property name="width_request">0</property>
+            <property name="height_request">0</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Configuracion de la Partida</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 14"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">10</property>
+            <property name="y">10</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width_request">0</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Modo de Juego:</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 10"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">10</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="toogle_jugvsjug">
+            <property name="width_request">100</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="xalign">0.5</property>
+            <property name="yalign">0.5</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Jug VS Jug</property>
+                <attributes>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="toogle_jugvscpu">
+            <property name="width_request">0</property>
+            <property name="height_request">30</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">toogle_jugvsjug</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Jug VS CPU</property>
+                <attributes>
+                  <attribute name="foreground" value="#000000000000"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">390</property>
+            <property name="y">50</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="toogle_cpuvscpu">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">toogle_jugvsjug</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">CPU VS CPU</property>
+                <attributes>
+                  <attribute name="foreground" value="#000000000000"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">523</property>
+            <property name="y">23</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="botonfinconfig">
+            <property name="label" translatable="yes">A jugar!</property>
+            <property name="width_request">73</property>
+            <property name="height_request">34</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+          </object>
+          <packing>
+            <property name="x">495</property>
+            <property name="y">230</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Color de tus fichas:</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 10"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">10</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="toogle_eggman">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">toogle_aleatoriocolor</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Eggman</property>
+                <attributes>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">350</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="toogle_sonic">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">toogle_aleatoriocolor</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Sonic</property>
+                <attributes>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Quien inicia:</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 10"/>
+              <attribute name="foreground" value="#000000000000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">10</property>
+            <property name="y">150</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="toogle_empiezajugador">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="draw_indicator">True</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Jugador 1</property>
+                <attributes>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">150</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="toogle_empiezapc">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <property name="group">toogle_empiezajugador</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Jugador 2 / PC</property>
+                <attributes>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">450</property>
+            <property name="y">150</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkRadioButton" id="toogle_aleatoriocolor">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">False</property>
+            <property name="active">True</property>
+            <property name="draw_indicator">True</property>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Aleatorio</property>
+                <attributes>
+                  <attribute name="font-desc" value="Sans 10"/>
+                  <attribute name="foreground" value="#ffffffffffff"/>
+                </attributes>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="x">450</property>
+            <property name="y">100</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width_request">158</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Nombre del jugador 1:</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 10"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">5</property>
+            <property name="y">197</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entrynombrejugador1">
+            <property name="width_request">168</property>
+            <property name="height_request">33</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+          </object>
+          <packing>
+            <property name="x">215</property>
+            <property name="y">189</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width_request">172</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Nombre del jugador 2:</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 10"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">2</property>
+            <property name="y">256</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="entrynombrejugador2">
+            <property name="width_request">168</property>
+            <property name="height_request">28</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+          </object>
+          <packing>
+            <property name="x">214</property>
+            <property name="y">252</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="ventanainfo">
+    <property name="can_focus">False</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkFixed" id="fixedinfo">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkImage" id="imageninfo">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">../GTKpractica/IMG/background.png</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="labelinfo">
+            <property name="width_request">554</property>
+            <property name="height_request">95</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Autor: Joaquin Weston aka Mr.Ego .
+
+Juego desarrollado para el curso de Lp1 del cuarto semestre.
+
+Semestre virtual aka Covisho-19.</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 12"/>
+              <attribute name="style" value="normal"/>
+              <attribute name="foreground" value="#ededd4d40000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">18</property>
+            <property name="y">73</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="botonfininfo">
+            <property name="label">gtk-ok</property>
+            <property name="width_request">100</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="x">250</property>
+            <property name="y">200</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="labelacercade">
+            <property name="width_request">100</property>
+            <property name="height_request">80</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">Acerca Del Juego REVERSI </property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 14"/>
+              <attribute name="style" value="normal"/>
+              <attribute name="foreground" value="#ffffffffffff"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">20</property>
+            <property name="y">5</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="ventanainicio">
+    <property name="can_focus">False</property>
+    <property name="default_width">400</property>
+    <property name="default_height">250</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkFixed" id="fixedinicio">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <child>
+          <object class="GtkImage" id="imagenprincipal">
+            <property name="width_request">440</property>
+            <property name="height_request">250</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixbuf">../GTKpractica/IMG/background.png</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkButton" id="botonadelante">
+            <property name="label">gtk-go-forward</property>
+            <property name="width_request">100</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="x">406</property>
+            <property name="y">235</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="botonacercade">
+            <property name="label">gtk-about</property>
+            <property name="width_request">100</property>
+            <property name="height_request">40</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="use_stock">True</property>
+            <property name="always_show_image">True</property>
+          </object>
+          <packing>
+            <property name="x">86</property>
+            <property name="y">235</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="width_request">387</property>
+            <property name="height_request">108</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">REVERSI 
+SONIC EDITION</property>
+            <property name="justify">center</property>
+            <attributes>
+              <attribute name="font-desc" value="Sans Bold 34"/>
+              <attribute name="foreground" value="#ededd4d40000"/>
+            </attributes>
+          </object>
+          <packing>
+            <property name="x">116</property>
+            <property name="y">54</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="ventanatablero">
+    <property name="can_focus">False</property>
+    <child>
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkBox" id="boxtablero">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkFixed" id="fixedtablero">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButton" id="botonayuda">
+                <property name="label">gtk-help</property>
+                <property name="width_request">0</property>
+                <property name="height_request">0</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="use_stock">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="botonmenu">
+                <property name="label" translatable="yes">Menu</property>
+                <property name="width_request">61</property>
+                <property name="height_request">34</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+              </object>
+              <packing>
+                <property name="x">190</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="box_tablero">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <object class="GtkLabel" id="label_jugada">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">JUGADA</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="label_turno">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">TURNO</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
